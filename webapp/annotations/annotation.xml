@@ -1,0 +1,185 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZLKSIGNIWIS01_SRV/$metadata">
+        <edmx:Include Namespace="ZLKSIGNIWIS01_SRV"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+        <Annotations Target="ZLKSIGNIWIS01_SRV.SIGNIWISSPORTS">
+        <Annotation Term="UI.SelectionFields" >
+            <Collection>
+                <PropertyPath>Productid</PropertyPath>
+                <PropertyPath>Producttype</PropertyPath>
+            </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem" >
+            <Collection>
+                <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="Productid"/>
+                    <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Positive"/>
+                </Record>
+                <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="Productname"/>
+                    <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Neutral"/>
+                </Record>
+                
+                <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="Brand"/>
+                </Record>
+                <Record Type="UI.DataFieldForAnnotation">
+                    <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#datapoint"/>
+                </Record>
+                <Record Type="UI.DataFieldWithAction">
+                    <PropertyValue Property="Action" String="ZLKSIGNIWIS01_SRV.ZLKSIGNIWIS01_SRV_Entities/ProductsByCategory"/>
+                    <PropertyValue Property="Value"  Path="Quantity"/>
+                </Record>
+                <Record Type="UI.DataFieldForAnnotation">
+                    <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Quantity"/>
+                </Record>
+            </Collection>
+        </Annotation>
+        <Annotation Term="UI.DataPoint" Qualifier="datapoint">
+            <Record Type="UI.DataPointType">
+                <PropertyValue Property="Value" Path="Brand"/>
+                <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Information"/>
+                <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithIcon"/>
+                <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Rating"/>
+            </Record>
+        </Annotation>
+        <Annotation Term="UI.DataPoint" Qualifier="Quantity">
+            <Record Type="UI.DataPointType">
+                <PropertyValue Property="Value" Path="Quantity"/>
+                <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+             </Record>
+        </Annotation>
+            <Annotation Term="UI.DataPoint" Qualifier="PID">
+                <Record Type="UI.DataPointType">
+                <PropertyValue Property="Title" String="ProductId"/>
+                    <PropertyValue Property="Value" Path="Productid"/>
+                </Record>
+            </Annotation>
+
+            <Annotation Term="UI.DataPoint" Qualifier="PNAME">
+                <Record Type="UI.DataPointType">
+                <PropertyValue Property="Title" String="ProductName"/>
+                    <PropertyValue Property="Value" Path="Productname"/>
+                </Record>
+            </Annotation>
+
+            <Annotation Term="UI.DataPoint" Qualifier="">
+                <Record Type="UI.DataPointType">
+                 <PropertyValue Property="Title" String="ProductType"/>
+                    <PropertyValue Property="Value" Path="Producttype" />
+                </Record>
+            </Annotation>
+
+            <Annotation Term="UI.FieldGroup" Qualifier="productdetailss">
+                <Record Type="UI.FieldGroupType">
+                     <PropertyValue Property="Data">
+                         <Collection>
+                             <Record Type="UI.DataField">
+                                 <PropertyValue Property="Value" Path="Productid"/>
+                             </Record>
+                             <Record Type="UI.DataField">
+                                 <PropertyValue Property="Value" Path="Productname"/>
+                             </Record>
+                             <Record Type="UI.DataField">
+                                 <PropertyValue Property="Value" Path="Producttype"/>
+                             </Record>
+                             <Record Type="UI.DataField">
+                                 <PropertyValue Property="Value" Path="Specifications"/>
+                             </Record>
+                         </Collection>
+                     </PropertyValue>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.Badge" Qualifier="badge">
+                <Record Type="UI.BadgeType">
+                    <PropertyValue Property="HeadLine">
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Specifications" />
+                            <PropertyValue Property="Label" String="Specification"/>
+                        </Record>
+                    </PropertyValue>
+                    <PropertyValue Property="Title">
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Quantity" />
+                        </Record>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.HeaderFacets" >
+                <Collection>
+                    <Record Type="UI.ReferenceFacet">
+                        <PropertyValue Property="Target" AnnotationPath="@UI.Chart"/>
+                    </Record>
+                </Collection>
+            </Annotation>
+            <Annotation Term="UI.Chart" >
+                <Record Type="UI.ChartDefinitionType">
+                    <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
+                    <PropertyValue Property="Dimensions">
+                        <Collection>
+                            <PropertyPath>Productname</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="Measures">
+                        <Collection>
+                            <PropertyPath>Productid</PropertyPath>
+
+                        </Collection>
+
+                    </PropertyValue>
+
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.FieldGroup" Qualifier="details33127">
+                <Record Type="UI.FieldGroupType">
+                    <PropertyValue Property="Data">
+                        <Collection>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Amount"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Brand"/>
+                            </Record>
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Specifications"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.Facets" >
+                <Collection>
+                    <Record Type="UI.ReferenceFacet">
+                    <PropertyValue Property="Label" String="Product Details"/>
+                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#productdetailss"/>
+                    </Record>
+                    <Record Type="UI.ReferenceFacet">
+                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#details33127"/>
+                        <PropertyValue Property="Label" String="Details"/>
+                    </Record>
+                    <Record Type="UI.CollectionFacet">
+                        <PropertyValue Property="Facets">
+                            <Collection>
+                                <Record Type="UI.ReferenceFacet">
+                                    <PropertyValue Property="Target" AnnotationPath="@UI.Badge#badge"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Collection>
+            </Annotation>
+        </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
